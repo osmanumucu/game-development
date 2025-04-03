@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Plane movement up and down
         float VerticalInput = Input.GetAxis("Vertical");
         playerRb.AddForce(Vector3.up * upAndDOwnSpeed * VerticalInput);
 

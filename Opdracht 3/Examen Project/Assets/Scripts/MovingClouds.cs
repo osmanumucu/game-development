@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class FloatingObject : MonoBehaviour
 {
-    public float floatSpeed = 3f;      // Ne kadar hızlı yukarı-aşağı gitsin
-    public float floatAmplitude = 0.5f; // Ne kadar mesafe yukarı-aşağı gitsin
+    public float floatSpeed = 3f;      // How fast the clouds are moving up and down
+    public float floatAmplitude = 0.5f; // The range of clouds going up and down
 
     private Vector3 startPos;
 
     void Start()
     {
-        startPos = transform.position; // Başlangıç konumunu kaydet
+        startPos = transform.position; // Starting position
     }
 
     void Update()
