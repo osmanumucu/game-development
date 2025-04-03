@@ -15,8 +15,9 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         // Plane movement up and down
-        float VerticalInput = Input.GetAxis("Vertical");
-        playerRb.AddForce(Vector3.up * upAndDOwnSpeed * VerticalInput);
+        
+        float verticalInput = Input.GetAxis("Vertical");
+        playerRb.AddForce(Vector3.up * upAndDOwnSpeed * verticalInput);
 
     }
 }

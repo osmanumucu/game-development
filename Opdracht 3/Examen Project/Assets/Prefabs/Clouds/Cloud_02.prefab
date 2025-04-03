@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cloud_02
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c943ee3841fcbd94d9630c5e4529b603, type: 3}
+      propertyPath: m_TagString
+      value: Cloud
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c943ee3841fcbd94d9630c5e4529b603, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.1
