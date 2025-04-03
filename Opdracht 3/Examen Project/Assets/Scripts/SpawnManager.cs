@@ -53,28 +53,28 @@ public class SpawnManager : MonoBehaviour
     void SpawnGold()
     {
         float randomY = Random.Range(-4.5f, 6.5f); // The range wherein the golds are going to be spawned
-        Vector3 spawnPos = new Vector3(0, randomY, zSpawn); // The coordinates where the gold will be spawned
+        Vector3 spawnPos = new Vector3(0, randomY, zSpawn - 1); // The coordinates where the gold will be spawned
         Instantiate(gold, spawnPos, gold.gameObject.transform.rotation);
     }
 
     void SpawnSkull()
     {
         float randomY = Random.Range(-4.5f, 6.5f); // The range wherein the skulls are going to be spawned
-        Vector3 spawnPos = new Vector3(0, randomY, zSpawn); // The coordinates where the skull will be spawned
+        Vector3 spawnPos = new Vector3(0, randomY, zSpawn - 2); // The coordinates where the skull will be spawned
         Instantiate(skull, spawnPos, skull.gameObject.transform.rotation);
     }
 
     void SpawnRock()
     {
         float randomY = Random.Range(-4.5f, 6.5f); // The range wherein the rocks are going to be spawned
-        Vector3 spawnPos = new Vector3(0, randomY, zSpawn); // The coordinates where the rock will be spawned
+        Vector3 spawnPos = new Vector3(0, randomY, zSpawn - 3); // The coordinates where the rock will be spawned
         Instantiate(rock, spawnPos, rock.gameObject.transform.rotation);
     }
 
     void SpawnHeal()
     {
         float randomY = Random.Range(-4.5f, 6.5f); // The range wherein the heals are going to be spawned
-        Vector3 spawnPos = new Vector3(0, randomY, zSpawn); // The coordinates where the heal will be spawned
+        Vector3 spawnPos = new Vector3(0, randomY, zSpawn - 4); // The coordinates where the heal will be spawned
         Instantiate(heal, spawnPos, heal.gameObject.transform.rotation);
 
     }

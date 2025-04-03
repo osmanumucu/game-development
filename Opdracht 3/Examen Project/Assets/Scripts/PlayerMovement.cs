@@ -1,12 +1,20 @@
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody playerRb;
 
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI livesText;
+
+
     private float upAndDOwnSpeed = 10.0f;
+
+    // Score and Lives at the start of the game
     public int score = 0;
-    public int lives = 3;
+    public int lives = 1;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -55,6 +63,7 @@ public class PlayerMovement : MonoBehaviour
             Destroy(other.gameObject);
             score ++;
             Debug.Log("Score: " + score);
+            scoreText.text = "Score: " + score;
         } else if (other.gameObject.CompareTag("Skull"))
         {
             lives = 0;
@@ -78,6 +87,7 @@ public class PlayerMovement : MonoBehaviour
             Destroy(other.gameObject);
             lives++;
             Debug.Log("Lives: " + lives);
+            livesText.text = "Lives: " + lives;
         }
     }
 }
