@@ -6,10 +6,12 @@ public class PlayerMovement : MonoBehaviour
 
     private float upAndDOwnSpeed = 10.0f;
     public int score = 0;
+    public int lives = 1;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
+        Time.timeScale = 1f;
     }
 
     // Update is called once per frame
@@ -28,6 +30,13 @@ public class PlayerMovement : MonoBehaviour
         {
             Destroy(other.gameObject);
             score ++;
+            Debug.Log("Score: " + score);
+        } else if (other.gameObject.CompareTag("Skull"))
+        {
+            lives = 0;
+            Destroy(gameObject);
+            Debug.Log("Player crushed to a skull and is dead!");
+            Time.timeScale = 0;
         }
     }
 }
