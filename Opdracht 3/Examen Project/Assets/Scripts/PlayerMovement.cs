@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
         // Player dies if the plane flies too high or too low
 
         float maxHeight = 8.0f;
-        float minHeight = -6.0f;
+        float minHeight = -7.0f;
 
         if (transform.position.y > maxHeight)
         {
@@ -38,8 +38,6 @@ public class PlayerMovement : MonoBehaviour
             Die();
             Debug.Log("Player tried to fly too low!");
         }
-
-
 
     }
 
@@ -75,6 +73,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 Debug.Log("Lives: " + lives);
             }
+        } else if (other.gameObject.CompareTag("Heal"))
+        {
+            Destroy(other.gameObject);
+            lives++;
+            Debug.Log("Lives: " + lives);
         }
     }
 }
