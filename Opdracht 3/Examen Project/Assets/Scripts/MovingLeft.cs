@@ -8,6 +8,8 @@ public class MovingLeft : MonoBehaviour
     private float skullSpeed = 9.0f; // The movement speed of skull
     private float zDestroy = -20f; // The position when it will be destroyed
 
+    private float rockSpeed = 10.0f;
+
     // Update is called once per frame
     void Update()
     {
@@ -20,6 +22,9 @@ public class MovingLeft : MonoBehaviour
         } else if (CompareTag("Skull"))
         {
             SkullMovement();
+        } else if (CompareTag("Rock"))
+        {
+            RockMovement();
         }
 
     }
@@ -46,9 +51,20 @@ public class MovingLeft : MonoBehaviour
         }
     }
 
-        void SkullMovement()
+    void SkullMovement()
     {
         transform.Translate(Vector3.back * skullSpeed * Time.deltaTime); // Making the skull move to the left side
+
+        // Destroy the cloud if the position on z axis is less then zDestroy
+        if (transform.position.z < zDestroy)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    void RockMovement()
+    {
+        transform.Translate(Vector3.back * rockSpeed * Time.deltaTime); // Making the skull move to the left side
 
         // Destroy the cloud if the position on z axis is less then zDestroy
         if (transform.position.z < zDestroy)
