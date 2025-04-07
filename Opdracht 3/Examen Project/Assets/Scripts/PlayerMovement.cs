@@ -16,7 +16,8 @@ public class PlayerMovement : MonoBehaviour
     public TextMeshProUGUI bestEducationText;
     public Image logo;
 
-    // Music & Sound Effects
+
+
 
     private float upAndDOwnSpeed = 10.0f;
 
@@ -26,12 +27,25 @@ public class PlayerMovement : MonoBehaviour
     // Score and Lives at the start of the game
     public int score = 0;
     public int lives = 1;
+
+    // Sound Effects
+
+    public AudioClip coinSound;
+
+    private AudioSource audioSource;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
         Time.timeScale = 0f;
         gameStarted = false;
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    void playSound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
     }
 
     // Update is called once per frame
@@ -51,9 +65,10 @@ public class PlayerMovement : MonoBehaviour
             startText.text = "";
         }
 
-        if (score == 25)
+        if (score == 3)
         {
             gameOverText.text = "YOU WON!";
+            Time.timeScale = 0;
         }
 
         if (!gameStarted || isDead) {
@@ -127,6 +142,7 @@ public class PlayerMovement : MonoBehaviour
             score ++;
             Debug.Log("Score: " + score);
             scoreText.text = "Score: " + score;
+            playSound(coinSound);
         } else if (other.gameObject.CompareTag("Skull")) // What happens if the player hits the skull
         {
             lives = 0;
