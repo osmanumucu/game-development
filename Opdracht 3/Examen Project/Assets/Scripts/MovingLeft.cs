@@ -59,7 +59,7 @@ public class MovingLeft : MonoBehaviour
 
     void SkullMovement()
     {
-        transform.Translate(Vector3.back * skullSpeed * Time.deltaTime); // Making the skull move to the left side
+        transform.Translate(Vector3.right * skullSpeed * Time.deltaTime); // Making the skull move to the left side
 
         // Destroy the object if the position on z axis is less then zDestroy
         if (transform.position.z < zDestroy)

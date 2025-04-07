@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -8,9 +10,15 @@ public class PlayerMovement : MonoBehaviour
 
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI livesText;
+    public TextMeshProUGUI gameOverText;
+
+    public TextMeshProUGUI startText;
 
 
     private float upAndDOwnSpeed = 10.0f;
+
+    private bool gameStarted = false;
+    private bool isDead = false;
 
     // Score and Lives at the start of the game
     public int score = 0;
@@ -19,12 +27,29 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
-        Time.timeScale = 1f;
+        Time.timeScale = 0f;
+        gameStarted = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!gameStarted && Input.GetKeyDown(KeyCode.Space)) {
+            Time.timeScale = 1f;
+            gameStarted = true;
+            startText.text = "";
+        } 
+        
+        if (isDead && Input.GetKeyDown(KeyCode.Space)) {
+            Time.timeScale = 1f;
+            gameStarted = true;
+            startText.text = "";
+            RestartGame();
+        }
+
+        if (!gameStarted || isDead) {
+            return;
+        }
         // Plane movement up and down
         
         float verticalInput = Input.GetAxis("Vertical");
@@ -38,51 +63,80 @@ public class PlayerMovement : MonoBehaviour
         if (transform.position.y > maxHeight)
         {
             lives = 0;
-            Die();
+            Die("High");
             Debug.Log("Player tried to fly too high!");
         } else if (transform.position.y < minHeight) 
         {
             lives = 0;
-            Die();
+            Die("Low");
             Debug.Log("Player tried to fly too low!");
         }
 
     }
 
-    private void Die()
+    public void RestartGame()
     {
+        SceneManager.LoadScene("JetgoldGame");
+    }
+
+    private void Die(string cause)
+    {
+        isDead = true;
+        gameStarted = false;
         Destroy(gameObject);
-        Time.timeScale = 0;
+
+        // Different cases how the plauer might die
+        switch (cause)
+        {
+            case "High":
+                gameOverText.text = "Player tried to fly too high!";
+                break;
+            case "Low":
+                gameOverText.text = "Player tried to fly too low!";
+                break;
+            case "Skull":
+                gameOverText.text = "Player crushed to a skull and is dead!";
+                break;
+            case "Rock":
+                gameOverText.text = "Player got crushed by a rock!";
+                break;
+            default:
+                gameOverText.text = "Game Over!";
+                break;
+        }   
+            gameOverText.text += "\nPress SPACE to restart!";
+
     }
 
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Gold"))
+        if(other.gameObject.CompareTag("Gold")) // What happens if the player hits the gold
         {
             Destroy(other.gameObject);
             score ++;
             Debug.Log("Score: " + score);
             scoreText.text = "Score: " + score;
-        } else if (other.gameObject.CompareTag("Skull"))
+        } else if (other.gameObject.CompareTag("Skull")) // What happens if the player hits the skull
         {
             lives = 0;
-            Die();
+            Die("Skull");
             Debug.Log("Player crushed to a skull and is dead!");
-        } else if (other.gameObject.CompareTag("Rock"))
+        } else if (other.gameObject.CompareTag("Rock")) // What happens if the player hits the rock
         {
             Destroy(other.gameObject);
             lives--;
 
+            // If else statement for dying in case you have 1 life left
             if (lives <= 0)
             {
-                Die();
+                Die("Rock");
                 Debug.Log("Player is dead!");
             } else
             {
-                Debug.Log("Lives: " + lives);
+            livesText.text = "Lives: " + lives;
             }
-        } else if (other.gameObject.CompareTag("Heal"))
+        } else if (other.gameObject.CompareTag("Heal")) // What happens if the player hits heal
         {
             Destroy(other.gameObject);
             lives++;
