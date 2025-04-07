@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody playerRb;
 
+    // Texts
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI livesText;
     public TextMeshProUGUI gameOverText;
@@ -15,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public TextMeshProUGUI bestEducationText;
     public Image logo;
 
+    // Music & Sound Effects
 
     private float upAndDOwnSpeed = 10.0f;
 
