@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     private float upAndDOwnSpeed = 10.0f;
 
     private bool gameStarted = false;
-    private bool isDead = false;
+    public bool isDead = false;
 
     // Score and Lives at the start of the game
     public int score = 0;
@@ -44,7 +44,6 @@ public class PlayerMovement : MonoBehaviour
             Time.timeScale = 1f;
             gameStarted = true;
             startText.text = "";
-            RestartGame();
         }
 
         if (!gameStarted || isDead) {
@@ -74,11 +73,6 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    public void RestartGame()
-    {
-        SceneManager.LoadScene("JetgoldGame");
-    }
-
     private void Die(string cause)
     {
         isDead = true;
@@ -105,6 +99,12 @@ public class PlayerMovement : MonoBehaviour
                 break;
         }   
             gameOverText.text += "\nPress SPACE to restart!";
+
+    }
+
+    public void RestartScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
     }
 
