@@ -49,6 +49,11 @@ public class PlayerMovement : MonoBehaviour
             startText.text = "";
         }
 
+        if (score == 25)
+        {
+            gameOverText.text = "YOU WON!";
+        }
+
         if (!gameStarted || isDead) {
             return;
         }

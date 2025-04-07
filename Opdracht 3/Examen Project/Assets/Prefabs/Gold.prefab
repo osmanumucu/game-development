@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2445863638168118466}
   - component: {fileID: 6387974176549239447}
   - component: {fileID: 139315529283137143}
-  - component: {fileID: 5310203347696760172}
   - component: {fileID: 7189810661698546435}
+  - component: {fileID: -6494496624748764054}
   m_Layer: 0
   m_Name: Gold
   m_TagString: Gold
@@ -88,18 +88,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5310203347696760172
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6441669155206589869}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff8dc643002e2499b9fdc4864c4dd77d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &7189810661698546435
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -121,3 +109,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.58823854, y: 0.58823854, z: 0.11417866}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-6494496624748764054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6441669155206589869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff8dc643002e2499b9fdc4864c4dd77d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

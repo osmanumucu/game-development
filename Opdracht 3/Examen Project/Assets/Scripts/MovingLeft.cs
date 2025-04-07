@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class MovingLeft : MonoBehaviour
 {
+    
     // The movement speed of different objects
     private float cloudSpeed = 10.0f;
     private float goldSpeed = 7.5f;

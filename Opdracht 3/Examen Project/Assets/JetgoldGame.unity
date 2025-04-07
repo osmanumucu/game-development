@@ -274,6 +274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac6f7effb44e04139bb9d81c9eb0c85b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 5899792809336181389}
   clouds:
   - {fileID: 2002141125004899710, guid: 23fbaea13480645db9c0fc987ac09166, type: 3}
   - {fileID: 5241262810821568211, guid: 2d9f9827d4974447293161a191cf9477, type: 3}

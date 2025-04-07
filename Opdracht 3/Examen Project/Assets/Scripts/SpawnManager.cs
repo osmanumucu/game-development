@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+
+    public PlayerMovement player; // PlayerController scriptine erişim
+
     // All game objects that can be assigned with the inspector
     public GameObject[] clouds;
     public GameObject gold;
@@ -27,12 +30,14 @@ public class SpawnManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        InvokeRepeating("SpawnClouds", startDelay, cloudSpawnTime);
-        InvokeRepeating("SpawnGold", startDelay, goldSpawnTime);
-        InvokeRepeating("SpawnSkull", startDelay, skullSpawnTime);
-        InvokeRepeating("SpawnRock", startDelay, rockSpawnTime);
-        InvokeRepeating("SpawnHeal", startDelay, healSpawnTime);
-
+        if (player.score < 3) 
+        {
+            InvokeRepeating("SpawnClouds", startDelay, cloudSpawnTime);
+            InvokeRepeating("SpawnGold", startDelay, goldSpawnTime);
+            InvokeRepeating("SpawnSkull", startDelay, skullSpawnTime);
+            InvokeRepeating("SpawnRock", startDelay, rockSpawnTime);
+            InvokeRepeating("SpawnHeal", startDelay, healSpawnTime);
+        }
     }
 
     // Update is called once per frame
