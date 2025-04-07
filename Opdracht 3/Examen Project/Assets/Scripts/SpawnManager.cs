@@ -26,6 +26,14 @@ public class SpawnManager : MonoBehaviour
     private float rockSpawnTime = 3.0f;
     private float healSpawnTime = 10.0f;
 
+    // Making game harder as it goes on
+
+    public float difficultySpeed = 1.0f;
+    public float speedIncreaseRate = 0.1f;
+    public float timeToIncrease = 5f;
+    private float timer = 0f;
+
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -43,8 +51,16 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        timer += Time.deltaTime;
+
+        if (timer >= timeToIncrease)
+        {
+            difficultySpeed += speedIncreaseRate;
+            timer = 0f;
+            Debug.Log("Zorluk arttı! Yeni hız katsayısı: " + difficultySpeed);
+        }
     }
+
 
     // Spawning clouds
     void SpawnClouds()

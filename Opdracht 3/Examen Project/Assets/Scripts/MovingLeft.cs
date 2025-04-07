@@ -11,7 +11,24 @@ public class MovingLeft : MonoBehaviour
     private float healSpeed = 10.0f;
 
     // The position when the objects will be destroyed
-    private float zDestroy = -20f; 
+    private float zDestroy = -20f;
+    private float speedMultiplier = 1.0f;
+
+    void Start()
+    {
+        GameObject spawnManager = GameObject.Find("SpawnManager");
+        if (spawnManager != null)
+        {
+            speedMultiplier = spawnManager.GetComponent<SpawnManager>().difficultySpeed;
+        }
+
+        // Apply speedMultiplier to all base speeds
+        cloudSpeed *= speedMultiplier;
+        goldSpeed *= speedMultiplier;
+        skullSpeed *= speedMultiplier;
+        rockSpeed *= speedMultiplier;
+        healSpeed *= speedMultiplier;
+    }
 
 
     // Update is called once per frame
