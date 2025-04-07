@@ -11,8 +11,9 @@ public class PlayerMovement : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI livesText;
     public TextMeshProUGUI gameOverText;
-
     public TextMeshProUGUI startText;
+    public TextMeshProUGUI bestEducationText;
+    public Image logo;
 
 
     private float upAndDOwnSpeed = 10.0f;
@@ -38,6 +39,8 @@ public class PlayerMovement : MonoBehaviour
             Time.timeScale = 1f;
             gameStarted = true;
             startText.text = "";
+            bestEducationText.text = "";
+            logo.enabled = false;
         } 
         
         if (isDead && Input.GetKeyDown(KeyCode.Space)) {
