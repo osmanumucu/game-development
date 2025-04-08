@@ -16,7 +16,11 @@ public class PlayerMovement : MonoBehaviour
     public TextMeshProUGUI bestEducationText;
     public Image logo;
 
-
+    // Sound Effects
+    public AudioClip coinSound;
+    public AudioClip heartSound;
+    public AudioClip crushSound;
+    public AudioClip deathSound;
 
 
     private float upAndDOwnSpeed = 10.0f;
@@ -28,9 +32,6 @@ public class PlayerMovement : MonoBehaviour
     public int score = 0;
     public int lives = 1;
 
-    // Sound Effects
-
-    public AudioClip coinSound;
 
     private AudioSource audioSource;
 
@@ -65,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
             startText.text = "";
         }
 
-        if (score == 3)
+        if (score == 25)
         {
             gameOverText.text = "YOU WON!";
             Time.timeScale = 0;
@@ -102,7 +103,8 @@ public class PlayerMovement : MonoBehaviour
     {
         isDead = true;
         gameStarted = false;
-        Destroy(gameObject);
+        playSound(deathSound);
+        Destroy(gameObject, 1f);
 
         // Different cases how the plauer might die
         switch (cause)
@@ -152,6 +154,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Destroy(other.gameObject);
             lives--;
+            playSound(crushSound);
 
             // If else statement for dying in case you have 1 life left
             if (lives <= 0)
@@ -168,6 +171,7 @@ public class PlayerMovement : MonoBehaviour
             lives++;
             Debug.Log("Lives: " + lives);
             livesText.text = "Lives: " + lives;
+            playSound(heartSound);
         }
     }
 }
