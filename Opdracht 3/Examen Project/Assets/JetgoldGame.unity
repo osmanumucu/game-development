@@ -1004,7 +1004,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 018542a5305234ed6ab56adace632f9d, type: 3}
   m_Resource: {fileID: 8300000, guid: 018542a5305234ed6ab56adace632f9d, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.153
+  m_Volume: 0.11
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1796,10 +1796,13 @@ MonoBehaviour:
   startText: {fileID: 494014887}
   bestEducationText: {fileID: 1542950494}
   logo: {fileID: 973214999}
+  coinSound: {fileID: 8300000, guid: a406aa6eab818426e91065463faba282, type: 3}
+  heartSound: {fileID: 8300000, guid: f43e02f848020417aa7cf8290ce0ea27, type: 3}
+  crushSound: {fileID: 8300000, guid: dc3ff4941c3554923a623ac7ca5369eb, type: 3}
+  deathSound: {fileID: 8300000, guid: b60bfc3b153f54e759a51ec376adf2de, type: 3}
   isDead: 0
   score: 0
   lives: 1
-  coinSound: {fileID: 8300000, guid: 5376ec03290ef43849b102ff69f29757, type: 3}
 --- !u!65 &5899792809336181390
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1834,7 +1837,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.22
+  m_Volume: 0.373
   m_Pitch: 1
   Loop: 0
   Mute: 0

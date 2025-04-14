@@ -75,6 +75,7 @@ public class PlayerMovement : MonoBehaviour
         if (!gameStarted || isDead) {
             return;
         }
+
         // Plane movement up and down
         
         float verticalInput = Input.GetAxis("Vertical");
@@ -99,12 +100,13 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    // Death Function
     private void Die(string cause)
     {
         isDead = true;
         gameStarted = false;
         playSound(deathSound);
-        Destroy(gameObject, 1f);
+        Destroy(gameObject, 3f);
 
         // Different cases how the plauer might die
         switch (cause)
@@ -132,10 +134,10 @@ public class PlayerMovement : MonoBehaviour
     public void RestartScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
     }
 
 
+    // Colliding Functies
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Gold")) // What happens if the player hits the gold
